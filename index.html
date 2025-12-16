@@ -5,39 +5,37 @@
   <title>STUDY GUIDE</title>
   <style>
     html,body{margin:0;height:100%;background:#000;color:#fff;font-family:Arial,Helvetica,sans-serif;overflow:hidden}
-    h1{font-size:3em;text-align:center;margin-top:15vh;text-shadow:0 0 6px #fff,0 0 10px #fff,0 0 20px #fff}
-    .star{position:absolute;background:#fff;border-radius:50%;box-shadow:0 0 6px #fff,0 0 12px #fff}
-    @keyframes twinkle{0%{opacity:.2;transform:scale(.8)}50%{opacity:1;transform:scale(1.2)}100%{opacity:.2;transform:scale(.8)}}
-    #proxyBtn{display:block;margin:10vh auto 0;padding:14px 40px;font-size:1.3em;border:2px solid #fff;background:transparent;color:#fff;cursor:pointer;border-radius:30px;box-shadow:0 0 8px #fff,0 0 16px #fff;transition:.25s}
-    #proxyBtn:hover{background:#fff;color:#000;box-shadow:0 0 20px #fff}
+    h1{font-size:3em;text-align:center;margin-top:15vh;text-shadow:0 0 8px #fff,0 0 16px #fff,0 0 30px #fff}
+    /* slow fade-in, then stay bright forever */
+    .star{position:absolute;background:#fff;border-radius:50%;opacity:0;animation:fadeIn 6s forwards}
+    @keyframes fadeIn{to{opacity:1}}
+    #proxyBtn{display:block;margin:10vh auto 0;padding:14px 40px;font-size:1.3em;border:2px solid #fff;background:transparent;color:#fff;cursor:pointer;border-radius:30px;box-shadow:0 0 10px #fff,0 0 20px #fff;transition:.25s}
+    #proxyBtn:hover{background:#fff;color:#000;box-shadow:0 0 25px #fff}
     #homeBtn{position:fixed;bottom:20px;left:20px;padding:8px 18px;border:1px solid #fff;background:transparent;color:#fff;cursor:pointer;border-radius:4px;box-shadow:0 0 4px #fff}
     #homeBtn:hover{background:#fff;color:#000}
   </style>
 </head>
 <body>
-  <h1>THOMAS' PROXY</h1>
+  <h1>THOMAS' SITE</h1>
   <button id="proxyBtn">PROXY</button>
   <button id="homeBtn">HOME</button>
 
   <script>
-    /* ---- fake history / url ---- */
-    history.pushState({}, '', 'study-guide');
-
-    /* ---- stars ---- */
-    for(let i=0;i<80;i++){
+    /* ---- stars: slow fade-in, stay bright ---- */
+    for(let i=0;i<120;i++){
       const s=document.createElement('div');
       s.className='star';
-      const size=Math.random()*3+1;
+      const size=Math.random()*2.5+1;
       s.style.width=size+'px';s.style.height=size+'px';
       s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';
-      s.style.animation=`twinkle ${Math.random()*4+2}s infinite`;
+      s.style.animationDelay=Math.random()*5+'s'; // stagger starts
       document.body.appendChild(s);
     }
 
     /* ---- proxy button ---- */
     document.getElementById('proxyBtn').onclick=()=>{
       const w=window.open('about:blank','_blank');
-      w.document.write(`<!doctype html><html><head><title>STUDY GUIDE</title></head><body style="margin:0"><iframe src="https://clever.jansenmedical.net" style="width:100%;height:100vh;border:none"></iframe></body></html>`);
+      w.document.write(`<!doctype html><html><head><title>THOMAS' SITE</title></head><body style="margin:0"><iframe src="https://clever.jansenmedical.net" style="width:100%;height:100vh;border:none"></iframe></body></html>`);
       w.document.close();
     };
 
