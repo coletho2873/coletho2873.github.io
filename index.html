@@ -11,13 +11,16 @@
     @keyframes fadeIn{to{opacity:1}}
     #proxyBtn{display:block;margin:10vh auto 0;padding:14px 40px;font-size:1.3em;border:2px solid #fff;background:transparent;color:#fff;cursor:pointer;border-radius:30px;box-shadow:0 0 10px #fff,0 0 20px #fff;transition:.25s}
     #proxyBtn:hover{background:#fff;color:#000;box-shadow:0 0 25px #fff}
+    #basketBtn{display:block;margin:20px auto 0;padding:14px 40px;font-size:1.3em;border:2px solid #fff;background:transparent;color:#fff;cursor:pointer;border-radius:30px;box-shadow:0 0 10px #fff,0 0 20px #fff;transition:.25s}
+    #basketBtn:hover{background:#fff;color:#000;box-shadow:0 0 25px #fff}
     #homeBtn{position:fixed;bottom:20px;left:20px;padding:8px 18px;border:1px solid #fff;background:transparent;color:#fff;cursor:pointer;border-radius:4px;box-shadow:0 0 4px #fff}
     #homeBtn:hover{background:#fff;color:#000}
   </style>
 </head>
 <body>
   <h1>THOMAS' SITE</h1>
-  <button id="proxyBtn">PROXY</button>
+  <button id="proxyBtn">TRUFFLED</button>
+  <button id="basketBtn">BASKET RANDOM</button>
   <button id="homeBtn">HOME</button>
 
   <script>
@@ -35,7 +38,14 @@
     /* ---- proxy button ---- */
     document.getElementById('proxyBtn').onclick=()=>{
       const w=window.open('about:blank','_blank');
-      w.document.write(`<!doctype html><html><head><title>THOMAS' SITE</title></head><body style="margin:0"><iframe src="https://clever.jansenmedical.net" style="width:100%;height:100vh;border:none"></iframe></body></html>`);
+      w.document.write(`<!doctype html><html><head><title>TRUFFLED</title></head><body style="margin:0"><iframe src="https://clever.jansenmedical.net " style="width:100%;height:100vh;border:none"></iframe></body></html>`);
+      w.document.close();
+    };
+
+    /* ---- basket random button ---- */
+    document.getElementById('basketBtn').onclick=()=>{
+      const w=window.open('about:blank','_blank');
+      w.document.write(`<!doctype html><html><head><title>BASKET RANDOM</title></head><body style="margin:0"><iframe src="https://rnv3.pages.dev/G/basket-random/" style="width:100%;height:100vh;border:none"></iframe></body></html>`);
       w.document.close();
     };
 
